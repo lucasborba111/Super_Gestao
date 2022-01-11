@@ -17,7 +17,6 @@
     @foreach($motivo_contatos as $index=>$value)
         <option value="{{$value->id}}" {{old('motivo_contato_id') == $value->id ? 'selected' : ''}}>{{$value->motivo_contato}}</option>
     @endforeach
-    {{$errors->has('motivo_contato_id') ? $errors->first('motivo_contato_id') : ''}}
 
     </select>
 

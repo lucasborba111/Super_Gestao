@@ -48,6 +48,12 @@ class ContatoController extends Controller
                 'email'=>'email',
                 'motivo_contato_id'=>'required',
                 'mensagem'=>'required'
+            ],
+            ['nome.required'=>'O nome precisa ser preenchido',
+            'telefone.required'=>'O telefone precisa ser preenchido',
+            'email.email'=>'O email não atende aos padrões',
+            'mensagem.required'=>'A mensagem precisa ser preenchida',
+
             ]
             );
             SiteContato::create($request->all());

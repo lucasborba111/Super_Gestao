@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Session\Middleware\StartSession;
 
 class AutenticacaoMiddleware
 {
@@ -15,6 +16,12 @@ class AutenticacaoMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return Response('Acesso negado, a requisição requer autenticação!');
+        session_start();
+        if(isset($_SESSION['email'] )&& $_SESSION['senha']!=''){
+            return $next($request);
+        }
+        else{
+            return Response('Acesso negado, a requisição requer autenticação!');
+        }
     }
 }

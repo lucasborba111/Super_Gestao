@@ -32,10 +32,14 @@ class LoginController extends Controller
         $user = new User();
         $usuario = $user->where('email', $email)
         ->where('password', $password)
-        ->get();
+        ->get()
+        ->first();
 
         if(isset($usuario->name)){
-            echo 'Usuário existe';
+            session_start();
+            $_SESSION['senha']=$usuario->password;
+            $_SESSION['email']=$usuario->email;
+            return redirect()->route('app.clientes');
         }
         else{
             return redirect()->route('site.login', ['erro'=>1]);

@@ -21,7 +21,7 @@ class AutenticacaoMiddleware
             return $next($request);
         }
         else{
-            return Response('Acesso negado, a requisição requer autenticação!');
+            return redirect()->route('site.index');
         }
     }
 }

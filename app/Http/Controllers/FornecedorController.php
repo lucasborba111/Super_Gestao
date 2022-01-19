@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 class FornecedorController extends Controller
 {
     public function index(){
-        return view('app.fornecedor.index');
+        $fornecedores = new Fornecedor;
+        $fornecedores = Fornecedor::all();
+        return view('app.fornecedor.index', compact('fornecedores'));
     }
     public function listar(Request $request){
         $fornecedor = Fornecedor::where('nome','like', $request->input('nome'))->get();
-        return view('app.fornecedor.listar', ['fornecedor'=>$fornecedor]);
+        return view('app.fornecedor.listar', compact('fornecedor'));
     }
     public function adicionar(Request $request){
         $msg = '';
@@ -38,5 +40,13 @@ class FornecedorController extends Controller
         }
 
         return view('app.fornecedor.adicionar',['msg'=>$msg]);
+    }
+    public function editar(Request $request, $id){
+        $fornecedor = new Fornecedor;
+        $fornecedor = Fornecedor::find($id);
+        if($request->input('id')!='' && $request->input('_token')!=''){
+            $update = $fornecedor->update($request->all());
+        }
+        return view('app.fornecedor.editar', compact('fornecedor'));
     }
 }

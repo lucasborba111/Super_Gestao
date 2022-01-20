@@ -43,7 +43,7 @@ class FornecedorController extends Controller
         if($request->input('id')!='' && $request->input('_token')!=''){
             $id=$request->input('id');
             $fornecedor = Fornecedor::find($id); 
-             $update = $fornecedor->updated($request->all());
+            $update = $fornecedor->update($request->all());
             return view('app.fornecedor.index');
         }
         return view('app.fornecedor.adicionar',['msg'=>$msg]);
@@ -51,8 +51,10 @@ class FornecedorController extends Controller
     }
 
     public function editar($id){
+        $fornecedor =new Fornecedor;
+        
         $fornecedor = Fornecedor::find($id);
         
-        return view('app.fornecedor.adicionar', compact('fornecedor'));
+        return view('app.fornecedor.adicionar', ['fornecedor'=>$fornecedor]);
     }
 }

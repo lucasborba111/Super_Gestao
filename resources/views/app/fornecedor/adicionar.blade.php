@@ -17,8 +17,9 @@
                 <div style="width: 30%; margin-left:auto;margin-right:auto;">
                     {{$msg}}
                     <form method="POST" action="{{ route('app.fornecedor.adicionar') }}">
-                        @csrf
                         <input type="hidden" name="id" value="{{$fornecedor->id ?? old('id')}}">
+
+                        @csrf
 
                         <input type="text" name="nome" value="{{$fornecedor->nome ?? old('nome') }}" placeholder="Nome" class="borda-preta">
                         {{ $errors->has('nome') ? $errors->first('nome') : ''}}

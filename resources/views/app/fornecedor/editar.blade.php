@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div class="informacao-pagina" >  
-            <form action="app.fornecedor.editar" method="post">
+            <form action="app.fornecedor.adicionar" method="get">
      
             <table class="table table-hover" border="1" style="width: 80%; margin-left:auto;margin-right:auto;">
                     <tr>
@@ -25,10 +25,11 @@
 
                     <tr>
                             @csrf
+                            <td><input type="text" name="id" placeholder="Nome" value="{{$fornecedor->id}}"></td>
                             <td><input type="text" name="nome" placeholder="Nome" value="{{$fornecedor->nome}}"></td>
-                            <td><input type="text" name="nome" placeholder="Nome" value="{{$fornecedor->site}}"></td>
-                            <td><input type="text" name="nome" placeholder="Nome" value="{{$fornecedor->uf}}"></td>
-                            <td><input type="text" name="nome" placeholder="Nome" value="{{$fornecedor->email}}"></td>
+                            <td><input type="text" name="site" placeholder="Nome" value="{{$fornecedor->site}}"></td>
+                            <td><input type="text" name="uf" placeholder="Nome" value="{{$fornecedor->uf}}"></td>
+                            <td><input type="text" name="email" placeholder="Nome" value="{{$fornecedor->email}}"></td>
                     </tr>
                 </table>     
 

@@ -37,16 +37,23 @@ class FornecedorController extends Controller
             $fornecedor = new Fornecedor;
             $fornecedor->create($request->all());
             $msg = 'Cadastro realizado com sucesso!';
+            return view('app.fornecedor.adicionar',['msg'=>$msg]);
+
         }
 
-        return view('app.fornecedor.adicionar',['msg'=>$msg]);
+        if($request->input('id')!='' && $request->input('_token')!=''){
+            $id=$request->input('id');
+            $fornecedor = new Fornecedor;
+            $fornecedor = Fornecedor::find($id); 
+            return view('app.fornecedor.index');
+        }
+
     }
-    public function editar(Request $request, $id){
+
+    public function editar($id){
         $fornecedor = new Fornecedor;
         $fornecedor = Fornecedor::find($id);
-        if($request->input('id')!='' && $request->input('_token')!=''){
-            $update = $fornecedor->update($request->all());
-        }
+        
         return view('app.fornecedor.editar', compact('fornecedor'));
     }
 }

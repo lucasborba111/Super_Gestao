@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 class FornecedorController extends Controller
 {
     public function index(){
-        $fornecedores = new Fornecedor;
-        $fornecedores = Fornecedor::all();
-        return view('app.fornecedor.index', compact('fornecedores'));
+        
+        return view('app.fornecedor.index');
     }
     public function listar(Request $request){
-        $fornecedor = Fornecedor::where('nome','like', $request->input('nome'))->get();
+        
+        $fornecedor = Fornecedor::where('nome','like', '%'.$request->input('nome').'%')->get();
         return view('app.fornecedor.listar', compact('fornecedor'));
     }
     public function adicionar(Request $request){
         $msg = '';
-        if($request->input('_token')!=''){
+        if($request->input('_token')!='' && $request->input('id')==''){
             $regras = [
                 'nome'=>'required|min:3|max:40',
                 'site'=>'required',
@@ -37,23 +37,22 @@ class FornecedorController extends Controller
             $fornecedor = new Fornecedor;
             $fornecedor->create($request->all());
             $msg = 'Cadastro realizado com sucesso!';
-            return view('app.fornecedor.adicionar',['msg'=>$msg]);
 
         }
 
         if($request->input('id')!='' && $request->input('_token')!=''){
             $id=$request->input('id');
-            $fornecedor = new Fornecedor;
             $fornecedor = Fornecedor::find($id); 
+             $update = $fornecedor->updated($request->all());
             return view('app.fornecedor.index');
         }
+        return view('app.fornecedor.adicionar',['msg'=>$msg]);
 
     }
 
     public function editar($id){
-        $fornecedor = new Fornecedor;
         $fornecedor = Fornecedor::find($id);
         
-        return view('app.fornecedor.editar', compact('fornecedor'));
+        return view('app.fornecedor.adicionar', compact('fornecedor'));
     }
 }

@@ -20,12 +20,14 @@
                         <th>E-mail</th>
                     </tr>
                     </thead>
-                    @foreach($fornecedor as $pessoa)
+                    @foreach($fornecedor as $value)
                     <tr>
-                        <td>{{$pessoa->nome}}</td>
-                        <td>{{$pessoa->site}}</td>
-                        <td>{{$pessoa->uf}}</td>
-                        <td>{{$pessoa->email}}</td>
+                        <td>{{$value->nome}}</td>
+                        <td>{{$value->site}}</td>
+                        <td>{{$value->uf}}</td>
+                        <td>{{$value->email}}</td>
+                        <td><a  href="{{route('app.fornecedor.editar', ['id'=>$value->id])}}">Editar</a></td>
+
                     </tr>
                     @endforeach
                     </table>

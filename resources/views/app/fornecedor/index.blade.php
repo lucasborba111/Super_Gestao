@@ -10,7 +10,6 @@
                 <li><a href="{{ route('app.fornecedor.adicionar') }}">Novo</a></li>
             </ul>
         </div>
-            
             <div class="informacao-pagina" >            
                     <div style="width: 30%; margin-left:auto;margin-right:auto;">
                         <form method="POST" action="{{ route('app.fornecedor.listar') }}">
@@ -26,26 +25,5 @@
                             <button type="submit" class="borda-preta">Listar</button>
                         </form>
             </div>
-                <table class="table table-hover" border="1" style="width: 80%; margin-left:auto;margin-right:auto;">
-                <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Site</th>
-                    <th>Uf</th>
-                    <th>E-mail</th>
-                </tr>
-                </thead>
-                @foreach($fornecedores as $pessoa)
-                <tr>
-                    <td>{{$pessoa->nome}}</td>
-                    <td>{{$pessoa->site}}</td>
-                    <td>{{$pessoa->uf}}</td>
-                    <td>{{$pessoa->email}}</td>
-                    <td><a href="{{route('app.fornecedor.editar', $pessoa->id)}}">Editar</a></td>
-                    <td>Excluir</td>
-
-                </tr>
-                @endforeach
-                </table>
     </div>
 @endsection

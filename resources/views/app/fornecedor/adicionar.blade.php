@@ -12,10 +12,8 @@
 
             </ul>
         </div>
-        <div class="informacao-pagina" >            
-
+        <div class="informacao-pagina" >           
                 <div style="width: 30%; margin-left:auto;margin-right:auto;">
-                    {{$msg}}
                     <form method="POST" action="{{ route('app.fornecedor.adicionar') }}">
                         <input type="hidden" name="id" value="{{$fornecedor->id ?? old('id')}}">
 

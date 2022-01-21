@@ -46,14 +46,18 @@ class FornecedorController extends Controller
             $fornecedor->update($request->all());
             return view('app.fornecedor.adicionar');
         }
+        return view('app.fornecedor.adicionar');
 
     }
 
-    public function editar($id){
-        $fornecedor =new Fornecedor;
-        
+    public function editar($id){        
         $fornecedor = Fornecedor::find($id);
         
         return view('app.fornecedor.adicionar', ['fornecedor'=>$fornecedor]);
+    }
+
+    public function excluir($id){
+        $fornecedor = Fornecedor::find($id)->delete();
+        return redirect()->route('app.fornecedor');
     }
 }

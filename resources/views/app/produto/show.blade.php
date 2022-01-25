@@ -22,6 +22,7 @@
                 <th>Descrição</th>
                 <th>Peso</th>
                 <th>Unidade Id</th>
+               
             </tr>
             </thead>
             <tr>
@@ -29,6 +30,8 @@
                 <td>{{$produto->descricao}}</td>
                 <td>{{$produto->peso}}</td>
                 <td>{{$produto->unidade_id}}</td>
+                
+
                 <td><a  href="{{route('produto.edit', ['produto'=>$produto->id])}}">Editar</a></td>
                 <td>
                 <form id="form_{{$produto->id}}" action="{{route('produto.destroy', ['produto'=>$produto->id])}}" method="post">

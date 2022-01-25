@@ -27,7 +27,7 @@ class ProdutoDetalheController extends Controller
     {
         //
         $unidades = Unidade::all();
-        return view('app.produto_detalhe.create', ['unidades'=>$unidades]);
+        return view('app.produto_detalhe.create', ['unidades'=>$unidades, ]);
     }
 
     /**
@@ -64,6 +64,7 @@ class ProdutoDetalheController extends Controller
     {
         //
         $unidades = Unidade::all();
+        
         return view('app.produto_detalhe.edit', ['produto_detalhe'=>$produto_detalhe, 'unidades'=>$unidades]);
     }
 

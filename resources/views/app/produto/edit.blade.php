@@ -14,7 +14,7 @@
         </div>
         <div class="informacao-pagina" >           
                 <div style="width: 30%; margin-left:auto;margin-right:auto;">
-                    @include('app.produto._components.create-form')
+                    @include('app.produto._components.edit-form')
                 </div>
         </div>
     </div>

@@ -42,6 +42,7 @@ Route::middleware('autenticacao')
     Route::get('/fornecedor/excluir/{id}', 'FornecedorController@excluir')->name('app.fornecedor.excluir');
     
     Route::resource('produto', 'ProdutoController');
+    Route::resource('produto_detalhe', 'ProdutoDetalheController');
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('site.teste');

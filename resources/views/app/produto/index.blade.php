@@ -34,10 +34,10 @@
                 <td>{{$produto->descricao}}</td>
                 <td>{{$produto->peso}}</td>
                 <td>{{$produto->unidade_id}}</td>
-                <td>{{$produto->fornecedor->nome}}</td>
-                <td>{{$produto->produto_detalhe->altura}}</td>
-                <td>{{$produto->produto_detalhe->largura}}</td>
-                <td>{{$produto->produto_detalhe->comprimento}}</td>
+                <td>{{$produto->fornecedor->nome ?? ''}}</td>
+                <td>{{$produto->produto_detalhe->altura ?? ''}}</td>
+                <td>{{$produto->produto_detalhe->largura ?? ''}}</td>
+                <td>{{$produto->produto_detalhe->comprimento ?? ''}}</td>
                 <td><a  href="{{route('produto.show', ['produto'=>$produto->id])}}">Visualizar</a></td>
             </tr>
             @endforeach

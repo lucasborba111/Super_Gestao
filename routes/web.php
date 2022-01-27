@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PedidoController;
 use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -30,10 +31,7 @@ Route::middleware('autenticacao')
     ->prefix('/app')
     ->group(function() {
     Route::get('/home', 'HomeController@index')->name('app.home');
-    Route::get('/sair', 'LoginController@sair')->name('app.sair');
-
-    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
-    
+    Route::get('/sair', 'LoginController@sair')->name('app.sair');    
     Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
     Route::post('/fornecedor/listar', 'FornecedorController@listar')->name('app.fornecedor.listar');
     Route::get('/fornecedor/adicionar','FornecedorController@adicionar')->name('app.fornecedor.adicionar');
@@ -43,6 +41,12 @@ Route::middleware('autenticacao')
     
     Route::resource('produto', 'ProdutoController');
     Route::resource('produto_detalhe', 'ProdutoDetalheController');
+
+    Route::resource('cliente', ClienteController::class);
+    Route::resource('pedido', 'PedidoController');
+    Route::resource('pedido-produto', PedidoProdutoController::class);
+
+
 });
 
 Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('site.teste');

@@ -1,21 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Cliente;
+
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class PedidoProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $clientes = Cliente::all();
-        return view('app.cliente.index', ['clientes'=>$clientes, 'request'=>$request->all()]);
     }
 
     /**
@@ -42,13 +40,12 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cliente $cliente
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show($id)
     {
         //
-        return view('app.cliente.show', ['cliente'=>$cliente]);
     }
 
     /**

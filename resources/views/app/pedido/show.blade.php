@@ -15,7 +15,7 @@
             
         </div>
         <div class="informacao-pagina" >
-            <table class="table table-hover" border="1">
+            <table class="table table-hover" >
             <thead>
             <tr>
                 <th>Id</th>

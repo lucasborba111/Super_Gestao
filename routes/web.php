@@ -45,7 +45,8 @@ Route::middleware('autenticacao')
     Route::resource('cliente', ClienteController::class);
     Route::resource('pedido', 'PedidoController');
     //Route::resource('pedido-produto', PedidoProdutoController::class);
-
+    Route::get('/pedido-produto/create/{pedido}', 'PedidoControler@create' );
+    Route::post('/pedido-produto/store/{pedido}', 'PedidoControler@store');
 
 });
 

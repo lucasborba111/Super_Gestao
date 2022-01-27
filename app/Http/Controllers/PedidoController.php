@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\Pedido;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,8 @@ class PedidoController extends Controller
     public function create()
     {
         //
+        $info_cliente = Cliente::all();
+        return view('app.pedido.create', compact('info_cliente'));
     }
 
     /**
@@ -38,40 +41,47 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         //
+        Pedido::create($request->all());
+        return redirect()->route('pedido.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pedido $pedido
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Pedido $pedido)
     {
         //
+        $pedidos = Pedido::with(['cliente', 'pedido'])->paginate(10);
+        return view('app.pedido.show', compact('pedido','pedidos'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pedido $pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pedido $pedido)
     {
         //
+        return view('app.pedido.edit', ['pedido'=>$pedido]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Pedido $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pedido $pedido)
     {
         //
+        $pedido->update($request->all());
+        return redirect()->route('pedido.show', compact('pedido'));
     }
 
     /**

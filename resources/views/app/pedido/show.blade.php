@@ -24,7 +24,7 @@
             </thead>
             <tr>
                 <td>{{$pedido->id}}</td>
-                <td>{{$pedido->nome}}</td>
+                <td>{{$pedido->cliente->nome}}</td>
 
                 <td><a  href="{{route('pedido.edit', ['pedido'=>$pedido->id])}}">Editar</a></td>
                 <td>

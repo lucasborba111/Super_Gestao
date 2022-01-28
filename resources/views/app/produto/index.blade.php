@@ -15,32 +15,39 @@
            
         </div>
         <div class="informacao-pagina" >
-            <table class="table table-hover" border="1">
+            <table class="table table-bordered table-hover" border="1">
             <thead>
             <tr>
                 <th>Nome</th>
                 <th>Descrição</th>
                 <th>Peso</th>
                 <th>Unidade Id</th>
-                <th>Fornecedor</th>
                 <th>Altura</th>
                 <th>largura</th>
                 <th>comprimento</th>
             </tr>
             </thead>
             @foreach($produtos as $produto)
+
             <tr>
                 <td>{{$produto->nome}}</td>
                 <td>{{$produto->descricao}}</td>
                 <td>{{$produto->peso}}</td>
                 <td>{{$produto->unidade_id}}</td>
-                <td>{{$produto->fornecedor->nome ?? ''}}</td>
-                <td>{{$produto->produto_detalhe->altura ?? ''}}</td>
-                <td>{{$produto->produto_detalhe->largura ?? ''}}</td>
-                <td>{{$produto->produto_detalhe->comprimento ?? ''}}</td>
-                <td><a  href="{{route('produto.show', ['produto'=>$produto->id])}}">Visualizar</a></td>
+                <td>{{$produto->itemDetalhe->altura ?? ''}}</td>
+                <td>{{$produto->itemDetalhe->largura ?? ''}}</td>
+                <td>{{$produto->itemDetalhe->comprimento ?? ''}}</td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <p>Pedidos:</p>
+                @foreach($produto->pedidos as $pedido)
+                    {{$pedido->id}}-<a  href="{{route('app.pedido_produto.create', ['pedido'=>$pedido->id])}}">Visualizar</a><br>
+                @endforeach
+                </td>
             </tr>
             @endforeach
+
             </table>
            
         </div>

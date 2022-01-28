@@ -13,7 +13,38 @@
             </ul>
         </div>
         <div class="informacao-pagina" >           
+
                 <div style="width: 30%; margin-left:auto;margin-right:auto;">
+                    <table class="table table-hover">
+                      
+                       
+                        <tr>
+                            <td>
+                                Id
+                            </td>
+                            <td>
+                                Nome do Produto
+                            </td>
+                            <td>
+                                Data de inclusão
+                            </td>
+                        </tr>
+                        @foreach ($pedido->produtos as $item)
+                        <tr>
+                            <td>
+                                {{$item->id}}
+                            </td>
+                            <td>
+                                {{$item->nome}}
+                            </td>
+                            <td>
+                                {{$item->created_at->format('d/m/Y')}},
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    <br>                    <br>
+                    <br>                    <br>
                     @include('app.pedido_produto._components.create-form')
                 </div>
         </div>

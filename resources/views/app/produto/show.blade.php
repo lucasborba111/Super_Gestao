@@ -15,7 +15,6 @@
             
         </div>
         <div class="informacao-pagina" >
-            {{$produtos->toJson()}}
             <table class="table table-hover" border="1">
             <thead>
             <tr>

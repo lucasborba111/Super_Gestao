@@ -6,6 +6,8 @@
             <option placeholder="Produto"  value="{{$produto->id}}"> {{$produto->nome}}</option>
         @endforeach
     </select>
+    <input type="number" name="quantidade"  placeholder="Quantidade"> 
+
             <input type="hidden" name="pedido_id"  placeholder="Pedido"  value="{{$pedido->id}}"> 
     <button type="submit" class="borda-preta">Adicionar</button>
 </form>

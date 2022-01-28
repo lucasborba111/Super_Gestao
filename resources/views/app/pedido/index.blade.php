@@ -28,6 +28,7 @@
                 <td>{{$pedido->cliente->nome}}</td>
 
                 <td><a href="{{route('pedido.show', ['pedido'=>$pedido->id])}}">Visualizar</a></td>
+                <td><a href="{{route('app.pedido_produto.create', ['pedido'=>$pedido->id])}}">Add produtos</a></td>
             </tr>
             @endforeach
             </table>

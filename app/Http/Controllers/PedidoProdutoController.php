@@ -93,10 +93,10 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedido $pedido)
+    public function destroy(Pedido $pedido, Produto $produto)
     {
         //
-        $pedido->produtos()->detach($pedido->id);
-        return redirect()->route('app.pedido_produto.create',['pedido'=>$pedido]);
+        $pedido->produtos()->detach($produto->id);
+        return redirect()->route('app.pedido_produto.create', ['pedido'=>$pedido, 'produto'=>$produto]);
     }
 }

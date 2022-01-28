@@ -41,10 +41,10 @@
                                 {{$item->created_at->format('d/m/Y')}},
                             </td>
                             <td>
-                                <form id="form_{{$pedido->id}}_{{$produto->id}}" method="post" action="{{route('app.pedido_produto.destroy', ['pedido'=>$pedido,'produto'=>$produto])}}">
+                                <form id="form_{{$pedido->id}}_{{$item->id}}" method="post" action="{{route('app.pedido_produto.destroy', ['pedido'=>$pedido,'produto'=>$item->id])}}">
                                     @method('DELETE')
                                     @csrf
-                                    <a href="" onclick="document.getElementById('form_{{$pedido->id}}_{{$produto->id}}').submit()">
+                                    <a href="#" onclick="document.getElementById('form_{{$pedido->id}}_{{$item->id}}').submit()">
                                         Excluir
                                     </a>
                                 </form>

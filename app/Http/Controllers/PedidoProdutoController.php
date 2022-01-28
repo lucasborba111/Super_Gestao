@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Pedido;
+use App\Produto;
 class PedidoProdutoController extends Controller
 {
     /**
@@ -21,9 +22,13 @@ class PedidoProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Pedido $pedido)
     {
         //
+        $produtos = Produto::all();
+        $prod_ped = Produto::with(['prod_ped']);
+
+        return view('app.pedido_produto.create', ['pedido'=>$pedido,'produtos'=>$produtos, 'prod_ped'=>$prod_ped]);
     }
 
     /**
@@ -32,9 +37,11 @@ class PedidoProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Pedido $pedido)
     {
         //
+        $pedido->create($request->all());
+        print_r($pedido);
     }
 
     /**
@@ -66,7 +73,7 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
     }

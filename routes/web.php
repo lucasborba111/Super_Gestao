@@ -43,6 +43,7 @@ Route::middleware('autenticacao')
     //Route::resource('pedido-produto', PedidoProdutoController::class);
     Route::get('/pedido-produto/create/{pedido}', 'PedidoProdutoController@create' )->name('app.pedido_produto.create');
     Route::post('/pedido-produto/store/{pedido}', 'PedidoProdutoController@store')->name('app.pedido_produto.store');
+    Route::delete('/pedido-produto/destroy/{pedido}/{produto}', 'PedidoProdutoController@destroy')->name('app.pedido_produto.destroy');
 
 });
 

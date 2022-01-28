@@ -40,6 +40,15 @@
                             <td>
                                 {{$item->created_at->format('d/m/Y')}},
                             </td>
+                            <td>
+                                <form id="form_{{$pedido->id}}_{{$produto->id}}" method="post" action="{{route('app.pedido_produto.destroy', ['pedido'=>$pedido,'produto'=>$produto])}}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <a href="" onclick="document.getElementById('form_{{$pedido->id}}_{{$produto->id}}').submit()">
+                                        Excluir
+                                    </a>
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

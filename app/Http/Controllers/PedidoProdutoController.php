@@ -48,8 +48,8 @@ class PedidoProdutoController extends Controller
         
         $pedido_produto->save();
         */
-        $pedido->produtos()->attach($request->get('produto_id'),
-            ['quantidade'=>$request->get('quantidade')]);
+        $pedido->produtos()->attach([
+            $request->get('produto_id')=>['quantidade'=>$request->get('quantidade')]]);
         return redirect()->route('app.pedido_produto.create', ['pedido'=>$pedido]);
     }
 
@@ -93,8 +93,10 @@ class PedidoProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pedido $pedido)
     {
         //
+        $pedido->produtos()->detach($pedido->id);
+        return redirect()->route('app.pedido_produto.create',['pedido'=>$pedido]);
     }
 }
